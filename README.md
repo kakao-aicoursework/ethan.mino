@@ -1,2 +1,2 @@
 # ethan.mino
-ethan.mino의 레포지토리입니다아아아.
+ethan.mino의 레포지토리입니다아아아아.
