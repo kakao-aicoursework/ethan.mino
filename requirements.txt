@@ -1,2 +1,9 @@
 openai~=1.3.8
 langchain~=0.0.349
+pydantic~=2.5.2
+fastapi~=0.104.1
+uvicorn==0.22.0
+gunicorn==20.1.0
+aiohttp==3.8.5
+
+requests~=2.31.0

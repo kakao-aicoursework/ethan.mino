@@ -1,8 +1,9 @@
 from openai import OpenAI
-import fileUtils
+from src.util import fileUtils
+
 
 class KnowledgeBaseGptModel:
-    def __init__(self, ai_key, system_prompt, knowledge_base_path, model="gpt-3.5-turbo", temperature=0.1):
+    def __init__(self, ai_key, system_prompt, knowledge_base_path, model="src-3.5-turbo", temperature=0.1):
         self.knowledge_base = fileUtils.file_to_str(knowledge_base_path)
         self.model = model
         self.temperature = temperature
