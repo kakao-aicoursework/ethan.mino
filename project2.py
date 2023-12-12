@@ -1,7 +1,7 @@
 import fileUtils
-from GptChatView import GptChatView
-from GptChatView import QueryModel
-from GptChatView import KnowledgeBaseGptModel
+from gpt.view.GptChatView import GptChatView
+from gpt.model.KnowledgeBaseGptModel import KnowledgeBaseGptModel
+from gpt.model.QueryModel import QueryModel
 
 if __name__ == "__main__":
     config = fileUtils.load_json_file("./config.json")
