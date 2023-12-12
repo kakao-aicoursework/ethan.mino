@@ -23,32 +23,27 @@ lang_chain_model = LangChainModel(
     system_prompt=system_prompt,
 )
 
-def callback_handler(request: ChatbotRequest) -> dict:
 
-    # ===================== start =================================
+def callback_handler(request: ChatbotRequest):
+    callback_url = request.userRequest.callbackUrl
+
+    if callback_url is None:
+        return
     response = lang_chain_model.query(request.userRequest.utterance)
 
-    print(response)
-   # 참고링크 통해 payload 구조 확인 가능
-    payload = {
-        "version": "2.0",
-        "template": {
-            "outputs": [
-                {
-                    "simpleText": {
-                        "text": response
-                    }
-                }
-            ]
-        }
-    }
-    # ===================== end =================================
-    # 참고링크1 : https://kakaobusiness.gitbook.io/main/tool/chatbot/skill_guide/ai_chatbot_callback_guide
-    # 참고링크1 : https://kakaobusiness.gitbook.io/main/tool/chatbot/skill_guide/answer_json_format
-
     time.sleep(1.0)
-
-    url = request.userRequest.callbackUrl
-
-    if url:
-        requests.post(url=url, json=payload)
+    requests.post(
+        url=callback_url,
+        json={
+            "version": "2.0",
+            "template": {
+                "outputs": [
+                    {
+                        "simpleText": {
+                            "text": response
+                        }
+                    }
+                ]
+            }
+        }
+    )
