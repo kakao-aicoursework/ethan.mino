@@ -11,14 +11,16 @@ from langchain.schema import SystemMessage
 
 class LangChainModel:
     def __init__(
-            self,
-            open_ai_key: str,
-            temperature: float,
-            model_name: str,
-            system_prompt: str,
+        self,
+        open_ai_key: str,
+        temperature: float,
+        model_name: str,
+        system_prompt: str,
     ):
-        os.environ["OPENAI_API_KEY"] = open_ai_key
-        self.llm = ChatOpenAI(temperature=0.8)
+        self.llm = ChatOpenAI(
+            open_ai_key=open_ai_key,
+            temperature=0.8
+        )
         self.temperature = temperature
         self.model_name = model_name
         self.system_prompt = SystemMessage(content=system_prompt)
